@@ -1,0 +1,108 @@
+/* ============ Device frames + native screen UI ============
+   Replaces the raster device renders (which already contained a phone/laptop)
+   with live UI inside ONE clean frame — no more device-in-device. */
+
+/* ---- Phone ---- */
+.device-phone {
+  width: 300px; margin: 0 auto; padding: 11px;
+  background: linear-gradient(160deg, #18222e, #0d141d);
+  border-radius: 44px; box-shadow: var(--nx-elevation-float);
+  position: relative;
+}
+.device-phone__screen {
+  background: var(--nx-bg-base); border-radius: 33px; overflow: hidden;
+  position: relative; height: 600px;
+}
+.device-phone__island {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  width: 92px; height: 26px; background: #0d141d; border-radius: 999px; z-index: 5;
+}
+
+/* ---- Browser / window ---- */
+.device-window {
+  border-radius: 14px; overflow: hidden; background: var(--nx-bg-base);
+  border: 1px solid var(--nx-border-default); box-shadow: var(--nx-elevation-float);
+}
+.device-window__bar {
+  display: flex; align-items: center; gap: 10px; padding: 11px 14px;
+  background: #fbfcfd; border-bottom: 1px solid var(--nx-border-default);
+}
+.device-window__lights { display: flex; gap: 7px; }
+.device-window__lights i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+.device-window__addr {
+  margin-left: 8px; font-size: 12px; color: var(--nx-text-secondary);
+  background: var(--nx-bg-subtle); border-radius: 999px; padding: 5px 14px;
+  flex: 1; max-width: 320px;
+}
+
+/* ---- shared inner UI ---- */
+.ui { font-size: 13px; color: var(--nx-text-primary); }
+.ui-overline { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--nx-text-secondary); }
+.ui-muted { color: var(--nx-text-secondary); }
+.ui-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.ui-avatar { width: 34px; height: 34px; border-radius: 50%; flex: none;
+  background: linear-gradient(140deg, var(--nx-accent-mint), var(--nx-teal-700)); }
+
+/* phone: triage */
+.ui-appbar { background: var(--nx-bg-brand); color: var(--nx-text-on-brand);
+  padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;
+  font-weight: 600; padding-top: 38px; }
+.ui-appbar .dotline { display: flex; gap: 4px; align-items: center; }
+.ui-appbar .dotline i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.6); }
+.ui-stack { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.ui-bubble { background: var(--nx-bg-brand-subtle); border-radius: 14px; padding: 11px 13px; font-size: 13px; }
+.ui-input { border: 1px solid var(--nx-border-strong); border-radius: 10px; padding: 10px 13px;
+  font-size: 13px; color: var(--nx-text-primary); }
+.ui-assess { border: 1px solid var(--nx-border-default); border-radius: 14px; padding: 14px;
+  display: flex; flex-direction: column; gap: 11px; box-shadow: var(--nx-elevation-card); }
+.ui-spec { background: var(--nx-bg-subtle); border-radius: 10px; padding: 10px; display: flex; gap: 10px; align-items: center; }
+.ui-btnrow { display: flex; gap: 8px; }
+.ui-btnrow .btn { flex: 1; justify-content: center; padding: 9px 12px; font-size: 13px; }
+
+/* window: hub */
+.ui-hub { display: grid; grid-template-columns: 150px 1fr 158px; min-height: 360px; }
+.ui-hub > div { padding: 14px; }
+.ui-hub .col-l { border-right: 1px solid var(--nx-border-default); }
+.ui-hub .col-r { border-left: 1px solid var(--nx-border-default); background: var(--nx-bg-subtle); }
+.ui-tl { position: relative; padding-left: 16px; margin-bottom: 14px; }
+.ui-tl::before { content: ""; position: absolute; left: 0; top: 4px; width: 8px; height: 8px; border-radius: 50%; background: var(--nx-accent-mint); }
+.ui-tl::after { content: ""; position: absolute; left: 3.5px; top: 14px; bottom: -14px; width: 1px; background: var(--nx-border-default); }
+.ui-tl:last-child::after { display: none; }
+.ui-tl b { font-size: 12px; } .ui-tl span { display: block; font-size: 11px; color: var(--nx-text-secondary); }
+.ui-msg { margin-bottom: 12px; }
+.ui-msg .who { font-size: 12px; font-weight: 600; color: var(--nx-text-brand); margin-bottom: 2px; }
+.ui-msg p { font-size: 12px; }
+.ui-alert { border: 1px solid var(--nx-status-danger); border-radius: 10px; padding: 11px;
+  background: color-mix(in srgb, var(--nx-status-danger) 6%, white); margin-top: 8px; }
+
+/* window: dashboard */
+.ui-dash { padding: 18px; background: var(--nx-bg-subtle); display: flex; flex-direction: column; gap: 16px; }
+.ui-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.ui-kpi { background: var(--nx-bg-base); border: 1px solid var(--nx-border-default); border-radius: 12px;
+  padding: 13px; display: flex; flex-direction: column; gap: 7px; box-shadow: var(--nx-elevation-card); }
+.ui-kpi .v { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+.ui-charts { display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; }
+.ui-panel { background: var(--nx-bg-base); border: 1px solid var(--nx-border-default); border-radius: 12px; padding: 16px; box-shadow: var(--nx-elevation-card); }
+.ui-bars { display: flex; align-items: flex-end; gap: 10px; height: 110px; margin-top: 12px; }
+.ui-bars i { flex: 1; background: var(--nx-bg-brand); border-radius: 5px 5px 0 0; display: block; }
+.ui-bars i.alt { background: var(--nx-accent-mint); }
+.ui-legend { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; font-size: 10px; color: var(--nx-text-secondary); }
+.ui-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.ui-table th { text-align: left; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nx-text-secondary); padding: 7px 8px; border-bottom: 1px solid var(--nx-border-default); }
+.ui-table td { padding: 9px 8px; border-bottom: 1px solid var(--nx-border-default); }
+.ui-table tr:last-child td { border-bottom: none; }
+
+@media (max-width: 1040px) {
+  .ui-hub { grid-template-columns: 1fr; }
+  .ui-hub .col-l, .ui-hub .col-r { border: none; border-bottom: 1px solid var(--nx-border-default); }
+  .ui-kpis { grid-template-columns: repeat(2, 1fr); }
+  .ui-charts { grid-template-columns: 1fr; }
+}
+
+/* parallax stage replaces the old raster media card */
+.screen__stage { min-width: 0; }
+.screen > div { min-width: 0; }
+
+/* re-enable alternating layout (old rule targeted .screen__media) */
+.screen--flip .screen__stage { order: 2; }
+@media (max-width: 880px) { .screen--flip .screen__stage { order: 0; } }

@@ -1,6 +1,7 @@
 import "./index.css";
 import "./sections.css";
 import "./premium.css";
+import "./screens.css";
 import { Grain } from "./components/Grain";
 import { Nav } from "./components/Nav";
 import { Marquee } from "./components/Marquee";
