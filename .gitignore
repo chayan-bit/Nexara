@@ -1,0 +1,39 @@
+# ───────── OS / editor ─────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sw?
+
+# ───────── Node / Vite (site/) ─────────
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ───────── Secrets / env ─────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ───────── Caches / coverage ─────────
+.cache/
+coverage/
+.eslintcache
+*.tsbuildinfo

@@ -1,0 +1,76 @@
+/* Nexara Design Tokens — generated to match the Figma variable collections
+ * Figma file: https://www.figma.com/design/UQ3esejYL49sBwcI3gXXkN
+ * Collections: Nexara/Color (Light), Nexara/Spacing (Value)
+ */
+
+:root {
+  /* ---- Primitives ---- */
+  --nx-teal-700: #0E7C7B;
+  --nx-teal-900: #0B5C5A;
+  --nx-mint-500: #3FBFB6;
+  --nx-mint-50:  #E6F4F3;
+  --nx-charcoal-900: #1F2933;
+  --nx-slate-500: #5B6B79;
+  --nx-white: #FFFFFF;
+  --nx-gray-100: #F2F5F7;
+  --nx-gray-200: #E2E8ED;
+  --nx-gray-300: #CBD5DC;
+  --nx-green-500: #1E9E6A;
+  --nx-amber-500: #E0A100;
+  --nx-red-500:   #D64545;
+  --nx-blue-500:  #2D7FF0;
+
+  /* ---- Semantic (alias primitives) ---- */
+  --nx-bg-base: var(--nx-white);
+  --nx-bg-subtle: var(--nx-gray-100);
+  --nx-bg-brand: var(--nx-teal-700);
+  --nx-bg-brand-subtle: var(--nx-mint-50);
+
+  --nx-text-primary: var(--nx-charcoal-900);
+  --nx-text-secondary: var(--nx-slate-500);
+  --nx-text-on-brand: var(--nx-white);
+  --nx-text-brand: var(--nx-teal-700);
+
+  --nx-border-default: var(--nx-gray-200);
+  --nx-border-strong: var(--nx-gray-300);
+
+  --nx-action-primary: var(--nx-teal-700);
+  --nx-action-primary-hover: var(--nx-teal-900);
+  --nx-accent-mint: var(--nx-mint-500);
+
+  --nx-status-success: var(--nx-green-500);
+  --nx-status-warning: var(--nx-amber-500);
+  --nx-status-danger:  var(--nx-red-500);
+  --nx-status-info:    var(--nx-blue-500);
+
+  /* ---- Spacing (8px base) ---- */
+  --nx-space-4: 4px;
+  --nx-space-8: 8px;
+  --nx-space-12: 12px;
+  --nx-space-16: 16px;
+  --nx-space-24: 24px;
+  --nx-space-32: 32px;
+  --nx-space-48: 48px;
+  --nx-space-64: 64px;
+
+  /* ---- Radius ---- */
+  --nx-radius-sm: 8px;
+  --nx-radius-md: 12px;
+  --nx-radius-pill: 999px;
+
+  /* ---- Elevation ---- */
+  --nx-elevation-card: 0 2px 8px rgba(15, 41, 46, 0.08);
+
+  /* ---- Typography (Inter) ---- */
+  --nx-font-family: "Inter", system-ui, -apple-system, sans-serif;
+  /* size / line-height / weight / tracking */
+  --nx-display-xl: 700 48px/56px var(--nx-font-family);   /* tracking -2% */
+  --nx-heading-l:  600 32px/40px var(--nx-font-family);   /* tracking -1% */
+  --nx-heading-m:  600 24px/32px var(--nx-font-family);   /* tracking -0.5% */
+  --nx-heading-s:  600 18px/26px var(--nx-font-family);
+  --nx-body-l:     400 16px/24px var(--nx-font-family);
+  --nx-body-m:     400 14px/22px var(--nx-font-family);
+  --nx-label-m:    500 14px/20px var(--nx-font-family);
+  --nx-caption:    500 12px/16px var(--nx-font-family);   /* tracking 0.5% */
+  --nx-overline:   600 11px/16px var(--nx-font-family);   /* tracking 6% */
+}

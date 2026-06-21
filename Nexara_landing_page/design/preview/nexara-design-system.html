@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nexara — Product Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../tokens/nexara-tokens.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--nx-font-family); color: var(--nx-text-primary); background: var(--nx-bg-subtle); -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: var(--nx-space-64) var(--nx-space-32); }
+  section { margin-bottom: var(--nx-space-64); }
+  h1 { font: var(--nx-display-xl); letter-spacing: -0.02em; color: var(--nx-text-brand); }
+  h2 { font: var(--nx-heading-l); letter-spacing: -0.01em; margin-bottom: var(--nx-space-8); }
+  h3 { font: var(--nx-heading-s); margin-bottom: var(--nx-space-16); color: var(--nx-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; font-size: 12px; }
+  p.lead { font: var(--nx-body-l); color: var(--nx-text-secondary); max-width: 720px; }
+  .overline { font: var(--nx-overline); letter-spacing: 0.06em; text-transform: uppercase; color: var(--nx-text-secondary); }
+  .card { background: var(--nx-bg-base); border: 1px solid var(--nx-border-default); border-radius: var(--nx-radius-md); box-shadow: var(--nx-elevation-card); }
+  .grid { display: grid; gap: var(--nx-space-16); }
+  .divider { height: 1px; background: var(--nx-border-default); margin: var(--nx-space-48) 0; }
+
+  /* ---- header ---- */
+  .masthead { background: var(--nx-bg-brand-subtle); border-radius: var(--nx-radius-md); padding: var(--nx-space-48); display: flex; align-items: center; gap: var(--nx-space-32); }
+  .emblem { width: 96px; height: 96px; border-radius: 24px; background: var(--nx-bg-brand); position: relative; flex: none; }
+  .emblem span { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: var(--nx-text-on-brand); }
+  .emblem .n1 { left: 20px; bottom: 24px; } .emblem .n2 { left: 40px; top: 30px; } .emblem .n3 { right: 20px; bottom: 30px; }
+  .emblem .ln { position:absolute; height:3px; background: var(--nx-accent-mint); transform-origin:left; }
+
+  /* ---- color swatches ---- */
+  .swatches { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); }
+  .swatch .chip { height: 72px; border-radius: var(--nx-radius-sm); border: 1px solid var(--nx-border-default); }
+  .swatch .name { font: var(--nx-label-m); margin-top: var(--nx-space-8); }
+  .swatch .hex { font: var(--nx-caption); color: var(--nx-text-secondary); }
+
+  /* ---- type ramp ---- */
+  .ramp .row { display: flex; align-items: baseline; gap: var(--nx-space-32); padding: var(--nx-space-12) 0; border-bottom: 1px solid var(--nx-border-default); }
+  .ramp .meta { width: 220px; flex: none; font: var(--nx-caption); color: var(--nx-text-secondary); }
+
+  /* ---- spacing ---- */
+  .sp { display:flex; align-items:center; gap: var(--nx-space-16); margin-bottom: var(--nx-space-12); }
+  .sp .lbl { width: 120px; font: var(--nx-caption); color: var(--nx-text-secondary); }
+  .sp .bar { height: 20px; border-radius: 4px; background: var(--nx-bg-brand); }
+
+  /* ---- components ---- */
+  .btn { font: var(--nx-label-m); border-radius: var(--nx-radius-sm); padding: 12px 16px; border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+  .btn--primary { background: var(--nx-action-primary); color: var(--nx-text-on-brand); }
+  .btn--primary:hover { background: var(--nx-action-primary-hover); }
+  .btn--secondary { background: var(--nx-bg-base); color: var(--nx-text-brand); border-color: var(--nx-border-strong); }
+  .btn--ghost { background: transparent; color: var(--nx-text-brand); }
+  .btn--sm { padding: 8px 12px; font-size: 13px; }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+
+  .badge { display: inline-flex; align-items: center; gap: 6px; font: var(--nx-caption); padding: 4px 12px; border-radius: var(--nx-radius-pill); }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .badge--success { background: color-mix(in srgb, var(--nx-status-success) 12%, white); color: var(--nx-status-success); }
+  .badge--warning { background: color-mix(in srgb, var(--nx-status-warning) 14%, white); color: var(--nx-status-warning); }
+  .badge--danger  { background: color-mix(in srgb, var(--nx-status-danger) 12%, white); color: var(--nx-status-danger); }
+  .badge--info    { background: color-mix(in srgb, var(--nx-status-info) 12%, white); color: var(--nx-status-info); }
+  .badge--success .dot { background: var(--nx-status-success); }
+  .badge--warning .dot { background: var(--nx-status-warning); }
+  .badge--danger .dot  { background: var(--nx-status-danger); }
+  .badge--info .dot    { background: var(--nx-status-info); }
+
+  .kpi { padding: var(--nx-space-24); display: flex; flex-direction: column; gap: var(--nx-space-8); }
+  .kpi .val { font: var(--nx-heading-l); }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font: var(--nx-label-m); }
+  .field input { font: var(--nx-body-m); padding: 12px 16px; border-radius: var(--nx-radius-sm); border: 1px solid var(--nx-border-strong); outline: none; }
+  .field input:focus { border-color: var(--nx-action-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--nx-action-primary) 18%, white); }
+  .field .help { font: var(--nx-caption); color: var(--nx-text-secondary); }
+  .specimen-row { display:flex; gap: var(--nx-space-16); flex-wrap: wrap; align-items: center; }
+
+  /* ---- screens ---- */
+  .screens { display: grid; grid-template-columns: 320px 1fr; gap: var(--nx-space-24); align-items: start; }
+  @media (max-width: 900px){ .screens { grid-template-columns: 1fr; } }
+  .phone { width: 320px; border-radius: 32px; background: var(--nx-bg-base); border: 1px solid var(--nx-border-default); box-shadow: var(--nx-elevation-card); overflow: hidden; }
+  .phone .status { background: var(--nx-bg-brand); color: var(--nx-text-on-brand); padding: 12px 16px; font: var(--nx-label-m); display:flex; justify-content:space-between; align-items:center; }
+  .phone .body { padding: var(--nx-space-16); display: flex; flex-direction: column; gap: var(--nx-space-12); }
+  .bubble { background: var(--nx-bg-brand-subtle); border-radius: var(--nx-radius-md); padding: var(--nx-space-12); font: var(--nx-body-m); }
+  .assess { border: 1px solid var(--nx-border-default); border-radius: var(--nx-radius-md); padding: var(--nx-space-16); display:flex; flex-direction:column; gap: var(--nx-space-12); }
+  .assess .line { display:flex; justify-content:space-between; align-items:center; }
+  .muted { color: var(--nx-text-secondary); font: var(--nx-caption); }
+  .spec { background:var(--nx-bg-subtle); border-radius: var(--nx-radius-sm); padding: var(--nx-space-12); display:flex; gap:var(--nx-space-12); align-items:center; }
+  .avatar { width:36px; height:36px; border-radius:50%; background: var(--nx-accent-mint); flex:none; }
+
+  .web { border-radius: var(--nx-radius-md); overflow: hidden; border: 1px solid var(--nx-border-default); box-shadow: var(--nx-elevation-card); background: var(--nx-bg-base); }
+  .web .topbar { background: var(--nx-bg-base); border-bottom: 1px solid var(--nx-border-default); padding: 12px 20px; display:flex; align-items:center; gap: 12px; font: var(--nx-heading-s); }
+  .web .topbar .logo { width: 24px; height:24px; border-radius:7px; background: var(--nx-bg-brand); }
+  .hub { display:grid; grid-template-columns: 200px 1fr 220px; min-height: 420px; }
+  .hub > div { padding: var(--nx-space-16); }
+  .hub .col-l { border-right: 1px solid var(--nx-border-default); }
+  .hub .col-r { border-left: 1px solid var(--nx-border-default); background: var(--nx-bg-subtle); }
+  .tl { position: relative; padding-left: 16px; margin-bottom: 16px; }
+  .tl::before { content:''; position:absolute; left:0; top:4px; width:8px; height:8px; border-radius:50%; background: var(--nx-accent-mint); }
+  .tl b { font: var(--nx-label-m); } .tl span { display:block; }
+  .msg { margin-bottom: var(--nx-space-12); }
+  .msg .who { font: var(--nx-label-m); color: var(--nx-text-brand); }
+  .alert { border: 1px solid var(--nx-status-danger); background: color-mix(in srgb, var(--nx-status-danger) 6%, white); border-radius: var(--nx-radius-sm); padding: var(--nx-space-12); margin-top: 8px; }
+
+  .dash { padding: var(--nx-space-24); display: flex; flex-direction: column; gap: var(--nx-space-24); background: var(--nx-bg-subtle); }
+  .kpirow { display:grid; grid-template-columns: repeat(4,1fr); gap: var(--nx-space-16); }
+  .chartcard { padding: var(--nx-space-24); }
+  .bars { display:flex; align-items:flex-end; gap: 14px; height: 140px; margin-top: var(--nx-space-16); }
+  .bars .b { flex:1; background: var(--nx-bg-brand); border-radius: 6px 6px 0 0; }
+  .bars .b.alt { background: var(--nx-accent-mint); }
+  .legend { display:flex; gap: var(--nx-space-16); margin-top: var(--nx-space-12); font: var(--nx-caption); color: var(--nx-text-secondary); }
+  table { width:100%; border-collapse: collapse; font: var(--nx-body-m); }
+  th, td { text-align:left; padding: 10px 12px; border-bottom: 1px solid var(--nx-border-default); }
+  th { font: var(--nx-overline); letter-spacing:0.06em; color: var(--nx-text-secondary); text-transform: uppercase; }
+  .ref { font: var(--nx-caption); color: var(--nx-text-secondary); margin-top: var(--nx-space-8); }
+  .ref img { width:100%; border-radius: var(--nx-radius-sm); border:1px solid var(--nx-border-default); margin-top: 8px; }
+  footer { text-align:center; color: var(--nx-text-secondary); font: var(--nx-caption); padding: var(--nx-space-32); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <section class="masthead">
+    <div class="emblem"><span class="n1"></span><span class="n2"></span><span class="n3"></span></div>
+    <div>
+      <div class="overline">Product Design System · v1 · 2026</div>
+      <h1>Nexara</h1>
+      <p class="lead">The Intelligent Healthcare Continuity Ecosystem — connecting every link in the care chain, from first symptom to long-term adherence. This page renders the live design system: foundations, components, and the three product surfaces, all wired to <code>nexara-tokens.css</code>.</p>
+    </div>
+  </section>
+
+  <!-- FOUNDATIONS: COLOR -->
+  <section>
+    <div class="overline">Foundations</div>
+    <h2>Color</h2>
+    <p class="lead">Semantic tokens alias primitives and bind to every component. Status colors stay distinct from brand teal so clinical signals never blur into chrome.</p>
+    <div class="grid swatches" style="margin-top:24px">
+      <div class="swatch"><div class="chip" style="background:var(--nx-bg-brand)"></div><div class="name">bg / brand</div><div class="hex">#0E7C7B</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-action-primary-hover)"></div><div class="name">action / hover</div><div class="hex">#0B5C5A</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-accent-mint)"></div><div class="name">accent / mint</div><div class="hex">#3FBFB6</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-bg-brand-subtle)"></div><div class="name">bg / brand-subtle</div><div class="hex">#E6F4F3</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-text-primary)"></div><div class="name">text / primary</div><div class="hex">#1F2933</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-text-secondary)"></div><div class="name">text / secondary</div><div class="hex">#5B6B79</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-border-default)"></div><div class="name">border / default</div><div class="hex">#E2E8ED</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-status-success)"></div><div class="name">status / success</div><div class="hex">#1E9E6A</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-status-warning)"></div><div class="name">status / warning</div><div class="hex">#E0A100</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-status-danger)"></div><div class="name">status / danger</div><div class="hex">#D64545</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-status-info)"></div><div class="name">status / info</div><div class="hex">#2D7FF0</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--nx-bg-base)"></div><div class="name">bg / base</div><div class="hex">#FFFFFF</div></div>
+    </div>
+  </section>
+
+  <!-- FOUNDATIONS: TYPE + SPACING -->
+  <section>
+    <div class="grid" style="grid-template-columns:1fr 1fr; gap:48px; align-items:start">
+      <div>
+        <div class="overline">Foundations</div>
+        <h2>Typography</h2>
+        <div class="ramp card" style="padding:16px 24px; margin-top:16px">
+          <div class="row"><div class="meta">Display/XL · 48</div><div style="font-weight:700;font-size:32px;letter-spacing:-.02em">Connecting the care chain</div></div>
+          <div class="row"><div class="meta">Heading/L · 32</div><div style="font-weight:600;font-size:26px;letter-spacing:-.01em">Intelligent triage & routing</div></div>
+          <div class="row"><div class="meta">Heading/M · 24</div><div style="font-weight:600;font-size:22px">Care team communication</div></div>
+          <div class="row"><div class="meta">Heading/S · 18</div><div style="font-weight:600;font-size:18px">Root cause adherence</div></div>
+          <div class="row"><div class="meta">Body/L · 16</div><div style="font-size:16px">The connective tissue across the chain.</div></div>
+          <div class="row"><div class="meta">Body/M · 14</div><div style="font-size:14px">Preliminary classification, not diagnosis.</div></div>
+          <div class="row" style="border:none"><div class="meta">Caption · 12</div><div style="font-size:12px;letter-spacing:.5px">PDC · Star Ratings · CPT 99453–99458</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="overline">Foundations</div>
+        <h2>Spacing — 8px base</h2>
+        <div class="card" style="padding:24px; margin-top:16px">
+          <div class="sp"><div class="lbl">space/4 · 4</div><div class="bar" style="width:4px"></div></div>
+          <div class="sp"><div class="lbl">space/8 · 8</div><div class="bar" style="width:8px"></div></div>
+          <div class="sp"><div class="lbl">space/12 · 12</div><div class="bar" style="width:12px"></div></div>
+          <div class="sp"><div class="lbl">space/16 · 16</div><div class="bar" style="width:16px"></div></div>
+          <div class="sp"><div class="lbl">space/24 · 24</div><div class="bar" style="width:24px"></div></div>
+          <div class="sp"><div class="lbl">space/32 · 32</div><div class="bar" style="width:32px"></div></div>
+          <div class="sp"><div class="lbl">space/48 · 48</div><div class="bar" style="width:48px"></div></div>
+          <div class="sp"><div class="lbl">space/64 · 64</div><div class="bar" style="width:64px"></div></div>
+          <p class="muted" style="margin-top:16px">Radius: sm 8 · md 12 · pill 999 &nbsp;·&nbsp; Elevation/Card: 0 2px 8px rgba(15,41,46,.08)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- COMPONENTS -->
+  <section>
+    <div class="overline">Library</div>
+    <h2>Components</h2>
+    <p class="lead">Every component binds to the tokens above — no hardcoded values.</p>
+
+    <div class="grid" style="grid-template-columns:1fr 1fr; gap:24px; margin-top:24px">
+      <div class="card" style="padding:24px">
+        <h3>Button</h3>
+        <div class="specimen-row">
+          <button class="btn btn--primary">Book appointment</button>
+          <button class="btn btn--secondary">Connect now</button>
+          <button class="btn btn--ghost">Skip</button>
+          <button class="btn btn--primary" disabled>Disabled</button>
+        </div>
+        <div class="specimen-row" style="margin-top:12px">
+          <button class="btn btn--primary btn--sm">Small</button>
+          <button class="btn btn--secondary btn--sm">Small</button>
+        </div>
+      </div>
+
+      <div class="card" style="padding:24px">
+        <h3>Status Badge</h3>
+        <div class="specimen-row">
+          <span class="badge badge--success"><span class="dot"></span>Adherent</span>
+          <span class="badge badge--warning"><span class="dot"></span>Priority</span>
+          <span class="badge badge--danger"><span class="dot"></span>Red flag</span>
+          <span class="badge badge--info"><span class="dot"></span>Routine</span>
+        </div>
+        <p class="muted" style="margin-top:16px">Always dot/icon + label — never color alone.</p>
+      </div>
+
+      <div class="card" style="padding:24px">
+        <h3>KPI Card</h3>
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:16px">
+          <div class="card kpi"><div class="overline">Population adherence</div><div class="val">82%</div><span class="badge badge--success"><span class="dot"></span>+6.1 pts</span></div>
+          <div class="card kpi"><div class="overline">Avg PDC</div><div class="val">0.84</div><span class="badge badge--success"><span class="dot"></span>4★ band</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:24px">
+        <h3>Input</h3>
+        <div class="field">
+          <label>Describe your symptoms</label>
+          <input type="text" placeholder="e.g. tight feeling in my chest…" />
+          <span class="help">Plain language is fine — Nexara routes you to the right care.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SCREEN 1: PATIENT TRIAGE -->
+  <section>
+    <div class="overline">Screen · Patient</div>
+    <h2>AI Triage / Intake</h2>
+    <div class="screens" style="margin-top:24px">
+      <div class="phone">
+        <div class="status"><span>Nexara</span><span>9:41</span></div>
+        <div class="body">
+          <div class="overline">Symptom Checker</div>
+          <div class="bubble">Hi Sarah — describe what you're feeling today.</div>
+          <div class="field"><input type="text" value="Tight feeling in my chest" /></div>
+          <button class="btn btn--ghost btn--sm" style="align-self:flex-end">Send ›</button>
+          <div class="assess">
+            <div class="overline">AI Assessment</div>
+            <div class="line"><span class="muted">Likely care pathway</span><b>Cardiology</b></div>
+            <div class="line"><span class="muted">Urgency tier</span><span class="badge badge--warning"><span class="dot"></span>Priority — today</span></div>
+            <div class="spec">
+              <div class="avatar"></div>
+              <div><b>Dr. Eleanor Vance</b><div class="muted">Cardiologist · 4.8 ★ · in-network</div></div>
+            </div>
+            <div class="specimen-row">
+              <button class="btn btn--primary btn--sm">Book</button>
+              <button class="btn btn--secondary btn--sm">Connect now</button>
+            </div>
+            <p class="muted">Guidance, not a diagnosis. A clinician reviews every priority flag.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="lead">One decision per screen, large targets, calm spacing. The patient never re-enters history — the Golden Thread pre-loads prior visits and fills. The "guidance, not diagnosis" line is persistent (regulatory + trust).</p>
+        <div class="ref">Directional concept render:<img src="../assets/04-app-triage.png" alt="Patient app concept" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: CARE HUB -->
+  <section>
+    <div class="overline">Screen · Provider</div>
+    <h2>Care Team Communication Hub</h2>
+    <div class="web" style="margin-top:24px">
+      <div class="topbar"><div class="logo"></div> Nexara · Care Team — <span class="muted" style="font:var(--nx-body-m)">Sarah Chen · 54F</span><span style="margin-left:auto" class="badge badge--warning"><span class="dot"></span>Adherence at risk</span></div>
+      <div class="hub">
+        <div class="col-l">
+          <h3>Golden Thread</h3>
+          <div class="tl"><b>Triage</b><span class="muted">Cardiology · priority</span></div>
+          <div class="tl"><b>Visit — GP</b><span class="muted">Referral issued</span></div>
+          <div class="tl"><b>Rx — Atorvastatin</b><span class="muted">Filled 12 days ago</span></div>
+          <div class="tl"><b>Side-effect report</b><span class="muted">Muscle pain</span></div>
+        </div>
+        <div class="col-c">
+          <h3>Care thread</h3>
+          <div class="msg"><div class="who">Dr. Patel (GP)</div><div>Referring to cardiology — query statin tolerance.</div></div>
+          <div class="msg"><div class="who">Pharmacist</div><div>Patient reports myalgia. Flagging interaction.
+            <div class="alert"><span class="badge badge--danger"><span class="dot"></span>Drug interaction</span>
+              <p style="margin-top:8px;font:var(--nx-body-m)">Atorvastatin + new diltiazem ↑ myopathy risk.</p>
+              <div class="specimen-row" style="margin-top:8px"><button class="btn btn--primary btn--sm">Adjust dose</button><button class="btn btn--secondary btn--sm">Call patient</button></div>
+            </div>
+          </div></div>
+        </div>
+        <div class="col-r">
+          <h3>Summary</h3>
+          <p class="muted">Active meds</p><p style="font:var(--nx-body-m);margin-bottom:12px">Atorvastatin, Diltiazem</p>
+          <p class="muted">Allergies</p><p style="font:var(--nx-body-m);margin-bottom:12px">Penicillin</p>
+          <p class="muted">Adherence</p><span class="badge badge--warning"><span class="dot"></span>PDC 0.71</span>
+          <p class="muted" style="margin-top:16px">🔒 Audit-logged · SMART on FHIR</p>
+        </div>
+      </div>
+    </div>
+    <div class="ref">Directional concept render:<img src="../assets/05-care-hub.png" alt="Care hub concept" /></div>
+  </section>
+
+  <!-- SCREEN 3: PAYER DASHBOARD -->
+  <section>
+    <div class="overline">Screen · Payer / Practice</div>
+    <h2>Population & Practice Dashboard</h2>
+    <div class="web" style="margin-top:24px">
+      <div class="topbar"><div class="logo"></div> Nexara · Population Health <span style="margin-left:auto" class="muted" style="font:var(--nx-body-m)">Medicare Advantage · Q2 2026</span></div>
+      <div class="dash">
+        <div class="kpirow">
+          <div class="card kpi"><div class="overline">Adherence rate</div><div class="val">82%</div><span class="badge badge--success"><span class="dot"></span>+6.1 pts</span></div>
+          <div class="card kpi"><div class="overline">Avg PDC</div><div class="val">0.84</div><span class="badge badge--success"><span class="dot"></span>4★ band</span></div>
+          <div class="card kpi"><div class="overline">Referral completion</div><div class="val">73%</div><span class="badge badge--warning"><span class="dot"></span>+9 pts</span></div>
+          <div class="card kpi"><div class="overline">RPM billable (CPT)</div><div class="val">1,284</div><span class="badge badge--info"><span class="dot"></span>99457</span></div>
+        </div>
+        <div class="grid" style="grid-template-columns:1.4fr 1fr; gap:24px">
+          <div class="card chartcard">
+            <div class="overline">Adherence by drug cohort</div>
+            <div class="bars">
+              <div class="b" style="height:62%"></div><div class="b" style="height:80%"></div><div class="b alt" style="height:48%"></div>
+              <div class="b" style="height:71%"></div><div class="b alt" style="height:55%"></div><div class="b" style="height:88%"></div><div class="b" style="height:66%"></div>
+            </div>
+            <div class="legend"><span>Statins</span><span>Anticoag</span><span>SSRIs</span><span>Beta-block</span><span>Metformin</span><span>ACE-i</span><span>PPIs</span></div>
+          </div>
+          <div class="card chartcard">
+            <div class="overline">Care-gap follow-up</div>
+            <table>
+              <tr><th>Cohort</th><th>Gap</th><th>Status</th></tr>
+              <tr><td>Post-MI statin</td><td>112</td><td><span class="badge badge--danger"><span class="dot"></span>Open</span></td></tr>
+              <tr><td>Diabetic A1c</td><td>64</td><td><span class="badge badge--warning"><span class="dot"></span>In progress</span></td></tr>
+              <tr><td>HTN refill</td><td>38</td><td><span class="badge badge--success"><span class="dot"></span>Closing</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ref">Directional concept render:<img src="../assets/06-payer-dashboard.png" alt="Payer dashboard concept" /></div>
+  </section>
+
+  <footer>Nexara · Product Design System · v1 · 2026 · Tokens: nexara-tokens.css · Figma: UQ3esejYL49sBwcI3gXXkN</footer>
+</div>
+</body>
+</html>

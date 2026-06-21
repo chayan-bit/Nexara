@@ -1,0 +1,175 @@
+/* ============================================================
+   Premium layer — texture, depth, glass, dark theming.
+   Loaded after index.css + sections.css; only adds/overrides
+   the production-grade visual polish.
+   ============================================================ */
+
+:root {
+  --nx-ink: #0a1618;          /* near-black teal */
+  --nx-ink-2: #0d1f22;
+  --nx-glow-mint: rgba(63, 191, 182, 0.5);
+  --nx-glow-teal: rgba(14, 124, 123, 0.45);
+  --nx-elevation-soft: 0 1px 2px rgba(15,41,46,0.04), 0 8px 24px -12px rgba(15,41,46,0.12);
+  --nx-elevation-lift: 0 1px 2px rgba(15,41,46,0.05), 0 24px 60px -18px rgba(11,92,90,0.30);
+}
+
+/* ---- Film grain (fixed, whole page) ---- */
+.grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: 0.035; mix-blend-mode: multiply;
+}
+.grain svg { width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce) { .grain { opacity: 0.025; } }
+
+/* ---- Refined section heading scale (editorial) ---- */
+.t-display { font-size: clamp(44px, 6.6vw, 78px); letter-spacing: -0.035em; line-height: 0.98; }
+.t-h1 { font-size: clamp(32px, 4.4vw, 52px); letter-spacing: -0.028em; line-height: 1.04; }
+.shead { margin-bottom: 56px; }
+
+/* ---- Gradient text ---- */
+.grad-text {
+  background: linear-gradient(120deg, var(--nx-teal-700) 0%, var(--nx-mint-500) 60%, var(--nx-teal-900) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---- Spotlight card (cursor sheen + gradient hairline) ---- */
+.spotlight {
+  position: relative; border-radius: var(--nx-radius-md);
+  background: var(--nx-bg-base);
+  box-shadow: var(--nx-elevation-soft);
+  --mx: 50%; --my: 0%;
+}
+.spotlight::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: linear-gradient(140deg, var(--nx-border-default), rgba(63,191,182,0.5), var(--nx-border-default));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0.7; transition: opacity 0.3s ease;
+}
+.spotlight:hover::before { opacity: 1; }
+.spotlight__sheen {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+  background: radial-gradient(420px circle at var(--mx) var(--my), rgba(63,191,182,0.14), transparent 60%);
+  transition: opacity 0.3s ease;
+}
+.spotlight:hover .spotlight__sheen { opacity: 1; }
+.spotlight__inner { position: relative; z-index: 1; height: 100%; }
+@media (prefers-reduced-motion: reduce) { .spotlight__sheen { display: none; } }
+
+/* ---- Glass surface ---- */
+.glass {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: var(--nx-elevation-lift);
+}
+.glass--dark {
+  background: rgba(13,31,34,0.55);
+  border: 1px solid rgba(63,191,182,0.22);
+  backdrop-filter: saturate(150%) blur(14px);
+  -webkit-backdrop-filter: saturate(150%) blur(14px);
+}
+
+/* ============ HERO (elevated) ============ */
+.hero { padding: 184px 0 104px; }
+.hero__title { margin: 26px 0 22px; }
+.hero__showcase {
+  position: relative; border-radius: 20px; overflow: hidden;
+  border: 1px solid rgba(63,191,182,0.18);
+  box-shadow: var(--nx-elevation-lift);
+  background: var(--nx-ink);
+  aspect-ratio: 1376/940;
+}
+.hero__showcase img { width: 100%; height: 100%; object-fit: cover; }
+.hero__showcase-glow {
+  position: absolute; inset: -2px; border-radius: 20px; pointer-events: none;
+  box-shadow: inset 0 0 90px rgba(10,22,24,0.7);
+}
+/* floating glass stat chips over the showcase */
+.float-chip {
+  position: absolute; z-index: 2; padding: 12px 14px; border-radius: 14px;
+  display: flex; flex-direction: column; gap: 2px; min-width: 120px;
+}
+.float-chip .v { font-weight: 700; font-size: 20px; color: #fff; letter-spacing: -0.01em; line-height: 1; }
+.float-chip .l { font-size: 11px; color: rgba(255,255,255,0.66); font-weight: 500; }
+.float-chip .v.teal { color: var(--nx-mint-500); }
+.float-chip--tl { top: 16px; left: 16px; }
+.float-chip--br { bottom: 16px; right: 16px; }
+.float-chip--ml { bottom: 34%; left: 16px; }
+
+.hero__meta .k { font-size: 28px; letter-spacing: -0.02em; }
+.hero__meta .k .grad-text { font-weight: 800; }
+
+/* ---- Trust marquee ---- */
+.marquee { overflow: hidden; border-top: 1px solid var(--nx-border-default); border-bottom: 1px solid var(--nx-border-default); background: var(--nx-bg-base); }
+.marquee__track { display: flex; gap: 56px; width: max-content; padding: 18px 0; }
+.marquee__item { display: inline-flex; align-items: center; gap: 12px; color: var(--nx-text-secondary); font-weight: 600; font-size: 14px; white-space: nowrap; }
+.marquee__item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--nx-accent-mint); }
+
+/* ============ DARK BAND (Vision) ============ */
+.band-dark {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(1100px 600px at 78% 30%, rgba(14,124,123,0.30), transparent 60%),
+    linear-gradient(160deg, #0a1618 0%, #0d2528 55%, #0a1618 100%);
+  color: rgba(255,255,255,0.86);
+}
+.band-dark .muted { color: rgba(255,255,255,0.6); }
+.band-dark .brand { color: var(--nx-mint-500); }
+.band-dark__bg {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.5; pointer-events: none;
+  background-size: cover; background-position: center;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 40%, #000 100%);
+}
+.band-dark .wrap { position: relative; z-index: 1; }
+.band-dark .eyebrow { background: rgba(63,191,182,0.1); border-color: rgba(63,191,182,0.25); color: var(--nx-mint-500); }
+.band-dark .thread__line { background: rgba(255,255,255,0.12); }
+.band-dark .layer__node {
+  background: rgba(13,31,34,0.7); border-color: var(--nx-mint-500); color: var(--nx-mint-500);
+  box-shadow: 0 0 0 6px rgba(63,191,182,0.06), 0 0 26px rgba(63,191,182,0.25);
+}
+.band-dark .layer__feat { color: var(--nx-mint-500); }
+.band-dark .thread__caption {
+  background: rgba(63,191,182,0.07); border-left-color: var(--nx-mint-500);
+}
+.band-dark .thread__caption strong { color: #fff; }
+
+/* ============ BENTO (Personas) ============ */
+.bento { display: grid; gap: 18px; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr; }
+.bento > .b-wide { grid-column: span 2; }
+@media (max-width: 900px) { .bento { grid-template-columns: repeat(2, 1fr); } .bento > .b-wide { grid-column: span 2; } }
+@media (max-width: 560px) { .bento { grid-template-columns: 1fr; } .bento > .b-wide { grid-column: span 1; } }
+.persona { padding: 26px; }
+.persona__role { font-size: 19px; }
+
+/* ============ Components / cards gradient borders ============ */
+.comp { box-shadow: var(--nx-elevation-soft); }
+.kpi { box-shadow: none; border-color: var(--nx-border-default); }
+
+/* ============ Screens — device chrome ============ */
+.screen__frame {
+  border-radius: 16px; overflow: hidden; background: #fff;
+  border: 1px solid var(--nx-border-default); box-shadow: var(--nx-elevation-lift);
+}
+.screen__bar { display: flex; align-items: center; gap: 7px; padding: 11px 14px; background: var(--nx-bg-subtle); border-bottom: 1px solid var(--nx-border-default); }
+.screen__bar .d { width: 10px; height: 10px; border-radius: 50%; }
+.screen__bar .addr { margin-left: 10px; font-size: 11px; color: var(--nx-text-secondary); background: var(--nx-bg-base); border: 1px solid var(--nx-border-default); border-radius: 6px; padding: 3px 10px; }
+.screen__phone { max-width: 300px; margin: 0 auto; border-radius: 30px; padding: 10px; background: #0d1f22; box-shadow: var(--nx-elevation-lift); }
+.screen__phone img { border-radius: 22px; }
+
+/* ============ CTA band ============ */
+.cta-band {
+  position: relative; overflow: hidden; text-align: center;
+  border-radius: 24px; padding: 64px 32px;
+  background: radial-gradient(800px 400px at 50% -10%, rgba(63,191,182,0.28), transparent 60%), linear-gradient(160deg, #0b5c5a, #0a1618);
+  color: #fff;
+}
+.cta-band h2 { color: #fff; }
+.cta-band .btn--primary { background: #fff; color: var(--nx-teal-900); }
+.cta-band .btn--primary:hover { background: var(--nx-mint-50); }
+.cta-band .btn--secondary { background: transparent; border-color: rgba(255,255,255,0.4); color: #fff; }
+.cta-band .btn--secondary:hover { background: rgba(255,255,255,0.1); }
+
+/* ---- Section divider accent ---- */
+.rule-accent { height: 1px; background: linear-gradient(90deg, transparent, var(--nx-border-default) 20%, var(--nx-border-default) 80%, transparent); }

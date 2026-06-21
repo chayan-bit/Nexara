@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* ---- Nexara tokens (mirror of design/tokens/nexara-tokens.css) ---- */
+:root {
+  --nx-teal-700: #0e7c7b;
+  --nx-teal-900: #0b5c5a;
+  --nx-mint-500: #3fbfb6;
+  --nx-mint-50: #e6f4f3;
+  --nx-charcoal-900: #1f2933;
+  --nx-slate-500: #5b6b79;
+  --nx-white: #ffffff;
+  --nx-gray-100: #f2f5f7;
+  --nx-gray-200: #e2e8ed;
+  --nx-gray-300: #cbd5dc;
+  --nx-green-500: #1e9e6a;
+  --nx-amber-500: #e0a100;
+  --nx-red-500: #d64545;
+  --nx-blue-500: #2d7ff0;
+
+  --nx-bg-base: var(--nx-white);
+  --nx-bg-subtle: var(--nx-gray-100);
+  --nx-bg-brand: var(--nx-teal-700);
+  --nx-bg-brand-subtle: var(--nx-mint-50);
+  --nx-text-primary: var(--nx-charcoal-900);
+  --nx-text-secondary: var(--nx-slate-500);
+  --nx-text-on-brand: var(--nx-white);
+  --nx-text-brand: var(--nx-teal-700);
+  --nx-border-default: var(--nx-gray-200);
+  --nx-border-strong: var(--nx-gray-300);
+  --nx-action-primary: var(--nx-teal-700);
+  --nx-action-primary-hover: var(--nx-teal-900);
+  --nx-accent-mint: var(--nx-mint-500);
+  --nx-status-success: var(--nx-green-500);
+  --nx-status-warning: var(--nx-amber-500);
+  --nx-status-danger: var(--nx-red-500);
+  --nx-status-info: var(--nx-blue-500);
+
+  --nx-space-4: 4px;
+  --nx-space-8: 8px;
+  --nx-space-12: 12px;
+  --nx-space-16: 16px;
+  --nx-space-24: 24px;
+  --nx-space-32: 32px;
+  --nx-space-48: 48px;
+  --nx-space-64: 64px;
+  --nx-radius-sm: 8px;
+  --nx-radius-md: 12px;
+  --nx-radius-pill: 999px;
+  --nx-elevation-card: 0 2px 8px rgba(15, 41, 46, 0.08);
+  --nx-elevation-float: 0 18px 50px -12px rgba(11, 92, 90, 0.28);
+
+  --nx-font: "Inter", system-ui, -apple-system, sans-serif;
+  --nx-maxw: 1160px;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  font-family: var(--nx-font);
+  color: var(--nx-text-primary);
+  background: var(--nx-bg-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul { margin: 0; padding: 0; list-style: none; }
+button { font-family: inherit; cursor: pointer; }
+
+::selection { background: var(--nx-mint-500); color: var(--nx-white); }
+
+/* ---- Type ramp ---- */
+.t-display { font-weight: 700; font-size: clamp(40px, 6vw, 64px); line-height: 1.04; letter-spacing: -0.025em; }
+.t-h1 { font-weight: 700; font-size: clamp(30px, 4vw, 44px); line-height: 1.08; letter-spacing: -0.02em; }
+.t-h2 { font-weight: 600; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.18; letter-spacing: -0.01em; }
+.t-h3 { font-weight: 600; font-size: 18px; line-height: 1.45; }
+.t-body-l { font-weight: 400; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; }
+.t-body { font-weight: 400; font-size: 15px; line-height: 1.6; }
+.t-label { font-weight: 500; font-size: 14px; line-height: 1.4; }
+.t-caption { font-weight: 500; font-size: 12px; line-height: 1.4; }
+.t-overline { font-weight: 600; font-size: 11px; line-height: 1.4; letter-spacing: 0.14em; text-transform: uppercase; }
+
+.muted { color: var(--nx-text-secondary); }
+.brand { color: var(--nx-text-brand); }
+
+/* ---- Layout ---- */
+.wrap { width: 100%; max-width: var(--nx-maxw); margin: 0 auto; padding: 0 24px; }
+.section { padding: clamp(72px, 11vh, 132px) 0; position: relative; }
+.section--tight { padding: clamp(48px, 7vh, 80px) 0; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--nx-text-brand);
+  border: 1px solid var(--nx-border-default);
+  background: var(--nx-bg-brand-subtle);
+  padding: 6px 14px; border-radius: var(--nx-radius-pill);
+}
+.eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--nx-accent-mint); }
+
+.card {
+  background: var(--nx-bg-base);
+  border: 1px solid var(--nx-border-default);
+  border-radius: var(--nx-radius-md);
+  box-shadow: var(--nx-elevation-card);
+}
+
+.grid { display: grid; gap: 24px; }
+@media (min-width: 760px) {
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 759px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
