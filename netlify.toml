@@ -1,4 +1,4 @@
 [build]
   base    = "Nexara_landing_page/site"
   command = "npm run build"
-  publish = "Nexara_landing_page/site/dist"
+  publish = "dist"
