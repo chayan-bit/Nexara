@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Nexara tokens as CSS variables (for SVG strokes, gradients-of-
+   solid-stops, and anything outside Tailwind's reach).
+   ============================================================ */
+:root {
+  --nx-teal-700: #0e7c7b;
+  --nx-teal-900: #0b5c5a;
+  --nx-mint-500: #3fbfb6;
+  --nx-mint-50: #e6f4f3;
+  --nx-charcoal-900: #1f2933;
+  --nx-slate-500: #5b6b79;
+  --nx-white: #ffffff;
+  --nx-gray-100: #f2f5f7;
+  --nx-gray-200: #e2e8ed;
+  --nx-gray-300: #cbd5dc;
+  --nx-success: #1e9e6a;
+  --nx-warning: #e0a100;
+  --nx-danger: #d64545;
+  --nx-info: #2d7ff0;
+  --nx-shadow-card: 0 2px 8px rgba(15, 41, 46, 0.08);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-nx-white text-nx-charcoal-900 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    background: var(--nx-mint-50);
+    color: var(--nx-teal-900);
+  }
+  /* Accessible, on-brand focus ring */
+  :where(a, button, [role='button'], input, [tabindex]):focus-visible {
+    outline: 2px solid var(--nx-teal-700);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@layer components {
+  /* Eyebrow / overline label */
+  .nx-eyebrow {
+    @apply text-overline uppercase text-nx-teal-700;
+  }
+  .nx-eyebrow--mint { color: var(--nx-mint-500); }
+
+  /* Hairline divider that reads as structure, not decoration */
+  .nx-hairline { @apply border-nx-gray-200; }
+
+  /* Brand-consistent photo treatment: slight desaturation + faint mint duotone,
+     applied in CSS only (never baked into the asset). */
+  .nx-photo {
+    @apply relative overflow-hidden;
+  }
+  .nx-photo img {
+    filter: saturate(0.85) contrast(1.02);
+  }
+  .nx-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--nx-mint-50);
+    mix-blend-mode: multiply;
+    opacity: 0.14;
+    pointer-events: none;
+  }
+  .nx-photo--teal::after {
+    background: var(--nx-teal-900);
+    opacity: 0.10;
+  }
+
+  /* Subtle dotted "grid" reads as engineering rigor (flat, no glow) */
+  .nx-dotgrid {
+    background-image: radial-gradient(var(--nx-gray-200) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+/* Lenis smooth-scroll baseline */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
