@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ads.css">
+<style>
+  .left { width: 460px; }
+  .left img { object-position: 50% 50%; }
+  .right { flex: 1; background: var(--nx-teal-700); }
+  .right .headline { font-size: 40px; margin-top: 16px; max-width: 18ch; }
+  .stat-pair { margin-top: 32px; display: flex; gap: 40px; }
+  .stat-pair .n { font-size: 76px; font-weight: 800; letter-spacing: -0.045em; line-height: .92; color: var(--nx-mint-300); }
+  .stat-pair .l { font-size: 17px; color: rgba(255,255,255,.88); margin-top: 8px; max-width: 12ch; line-height: 1.25; }
+  .right .subhead { font-size: 19px; margin: 30px 0 30px; max-width: 31ch; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <div class="photo left">
+    <img src="assets/doctor-phone.jpg" alt="Doctor reviewing patient data on a phone">
+  </div>
+
+  <div class="panel panel--pad right">
+    <div class="logo logo--light">
+      <svg class="logo__mark" viewBox="0 0 48 48" fill="none">
+        <path d="M9 40 V9 L39 40 V9" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9" cy="9" r="5" fill="#fff"/><circle cx="9" cy="40" r="5" fill="#3FBFB6"/>
+        <circle cx="39" cy="9" r="5" fill="#3FBFB6"/><circle cx="39" cy="40" r="5" fill="#fff"/>
+      </svg>
+      <span class="logo__word">Nexara</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <span class="eyebrow eyebrow--mint">Care can’t be a once-a-year event</span>
+    <h1 class="headline headline--light">Chronic disease is now the everyday Indian story.</h1>
+
+    <div class="stat-pair">
+      <div>
+        <div class="n">101M</div>
+        <div class="l">Indians living with diabetes</div>
+      </div>
+      <div>
+        <div class="n">136M</div>
+        <div class="l">more on the edge of it</div>
+      </div>
+    </div>
+
+    <div class="rule rule--light" style="margin-top:32px"></div>
+    <p class="subhead subhead--light">Conditions like these aren’t fixed in one visit. Nexara keeps the whole care chain connected — visit after visit.</p>
+    <a class="btn btn--mint">See what we’re building →</a>
+
+    <div class="spacer"></div>
+    <div class="foot-src foot-src--light">Source: ICMR-INDIAB study, <i>The Lancet Diabetes &amp; Endocrinology</i> (2023) — 101M with diabetes, 136M with pre-diabetes in India.</div>
+  </div>
+
+</div>
+</body>
+</html>

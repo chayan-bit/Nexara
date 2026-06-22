@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ads.css">
+<style>
+  .bg { position: absolute; inset: 0; }
+  .bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+  .bg .photo__tint { background: linear-gradient(180deg, rgba(8,64,63,.42) 0%, rgba(8,64,63,.78) 70%, rgba(8,64,63,.90) 100%); }
+  .content { position: relative; z-index: 2; width: 100%; padding: 70px 64px 64px; display: flex; flex-direction: column; }
+  .content .headline { font-size: 60px; margin-top: 16px; max-width: 17ch; }
+  .content .subhead { font-size: 19px; margin: 26px 0 0; max-width: 34ch; }
+  .stat-row { margin-top: 30px; display: flex; align-items: baseline; gap: 18px; }
+  .stat-row .stat-big { font-size: 92px; color: var(--nx-mint-300); }
+  .stat-row .stat-cap { font-size: 21px; color: #fff; max-width: 16ch; }
+  .content .btn { margin-top: 36px; align-self: flex-start; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="bg">
+    <img src="assets/place-signage.jpg" alt="Hospital floor directory and reception">
+    <div class="photo__tint"></div>
+  </div>
+
+  <div class="content">
+    <div class="logo logo--light">
+      <svg class="logo__mark" viewBox="0 0 48 48" fill="none">
+        <path d="M9 40 V9 L39 40 V9" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9" cy="9" r="5" fill="#fff"/><circle cx="9" cy="40" r="5" fill="#3FBFB6"/>
+        <circle cx="39" cy="9" r="5" fill="#3FBFB6"/><circle cx="39" cy="40" r="5" fill="#fff"/>
+      </svg>
+      <span class="logo__word">Nexara</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <span class="eyebrow eyebrow--mint">The first wrong turn</span>
+    <h1 class="headline headline--light">Getting sick is easy. Knowing which doctor to see isn’t.</h1>
+
+    <div class="stat-row">
+      <div class="stat-big">~80%</div>
+      <div class="stat-cap">shortfall of specialists at India’s rural community health centres.</div>
+    </div>
+
+    <div class="rule rule--light" style="margin-top:30px"></div>
+    <p class="subhead subhead--light">Nexara starts at the first symptom — routing you to the right specialty before you waste a single visit.</p>
+    <a class="btn btn--mint">See what we’re building →</a>
+
+    <div class="spacer"></div>
+    <div class="foot-src foot-src--light">Source: Rural Health Statistics / Health Dynamics of India 2022–23, Ministry of Health &amp; Family Welfare — 79.9% specialist shortfall at CHCs.</div>
+  </div>
+</div>
+</body>
+</html>

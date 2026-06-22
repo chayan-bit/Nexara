@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ads.css">
+<style>
+  .bg { position: absolute; inset: 0; }
+  .bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+  .bg .photo__tint { background: linear-gradient(180deg, rgba(8,64,63,.66) 0%, rgba(8,64,63,.80) 60%, rgba(8,64,63,.92) 100%); }
+  .content { position: relative; z-index: 2; width: 100%; padding: 70px 64px 64px; display: flex; flex-direction: column; }
+  .content .headline { font-size: 76px; margin-top: 18px; max-width: 13ch; line-height: 1.02; }
+  .content .headline .em { color: var(--nx-mint-300); }
+  .content .subhead { font-size: 21px; margin: 30px 0 0; max-width: 34ch; }
+  .content .btn { margin-top: 38px; align-self: flex-start; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="bg">
+    <img src="assets/surgery-team.jpg" alt="Care team working together">
+    <div class="photo__tint"></div>
+  </div>
+
+  <div class="content">
+    <div class="logo logo--light">
+      <svg class="logo__mark" viewBox="0 0 48 48" fill="none">
+        <path d="M9 40 V9 L39 40 V9" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9" cy="9" r="5" fill="#fff"/><circle cx="9" cy="40" r="5" fill="#3FBFB6"/>
+        <circle cx="39" cy="9" r="5" fill="#3FBFB6"/><circle cx="39" cy="40" r="5" fill="#fff"/>
+      </svg>
+      <span class="logo__word">Nexara</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <span class="eyebrow eyebrow--mint">The case for connection</span>
+    <h1 class="headline headline--light">Healthcare isn’t broken.<br>It’s <span class="em">disconnected.</span></h1>
+    <p class="subhead subhead--light">Symptom, specialist, pharmacy, follow-up — every link works alone. Nexara is the connective tissue that makes them work together, over one living record.</p>
+    <a class="btn btn--mint">Connecting every link in the care chain →</a>
+
+    <div class="spacer"></div>
+    <div class="foot-src foot-src--light">Nexara — the connective layer for Indian healthcare. Currently being built · early access opening soon.</div>
+  </div>
+</div>
+</body>
+</html>

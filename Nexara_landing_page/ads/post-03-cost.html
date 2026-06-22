@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ads.css">
+<style>
+  .bg { position: absolute; inset: 0; }
+  .bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+  .bg .photo__tint { background: rgba(11,20,23,.56); }
+  .content { position: relative; z-index: 2; width: 100%; padding: 70px 70px 64px; display: flex; flex-direction: column; }
+  .content .stat-big { font-size: 168px; color: #7FD8D0; margin-top: 6px; }
+  .content .stat-cap { font-size: 36px; color: #fff; margin-top: 14px; max-width: 19ch; }
+  .content .source--light { margin-top: 24px; font-size: 16px; }
+  .content .btn { margin-top: 38px; align-self: flex-start; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="bg">
+    <img src="assets/patient-a.jpg" alt="Weekly pill organizer">
+    <div class="photo__tint"></div>
+  </div>
+
+  <div class="content">
+    <div class="logo logo--light">
+      <svg class="logo__mark" viewBox="0 0 48 48" fill="none">
+        <path d="M9 40 V9 L39 40 V9" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9" cy="9" r="5" fill="#fff"/><circle cx="9" cy="40" r="5" fill="#3FBFB6"/>
+        <circle cx="39" cy="9" r="5" fill="#3FBFB6"/><circle cx="39" cy="40" r="5" fill="#fff"/>
+      </svg>
+      <span class="logo__word">Nexara</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <span class="eyebrow eyebrow--mint">The cost of chronic disease</span>
+    <div class="stat-big">$4.5T</div>
+    <div class="stat-cap">India’s projected loss to chronic disease before 2030 — much of it manageable with consistent care.</div>
+    <div class="source source--light">Source: World Economic Forum &amp; Harvard School of Public Health (2014).</div>
+    <a class="btn btn--mint">Nexara is building the fix →</a>
+  </div>
+</div>
+</body>
+</html>

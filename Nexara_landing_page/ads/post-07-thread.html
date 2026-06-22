@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ads.css">
+<style>
+  .bg { position: absolute; inset: 0; }
+  .bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 46%; }
+  .bg .photo__tint { background: linear-gradient(180deg, rgba(15,33,38,.40) 0%, rgba(15,33,38,.74) 64%, rgba(15,33,38,.90) 100%); }
+  .content { position: relative; z-index: 2; width: 100%; padding: 70px 64px 64px; display: flex; flex-direction: column; }
+  .content .headline { font-size: 58px; margin-top: 16px; max-width: 16ch; }
+  .content .subhead { font-size: 19px; margin: 26px 0 0; max-width: 36ch; }
+  .content .btn { margin-top: 36px; align-self: flex-start; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="bg">
+    <img src="assets/ward-empty.jpg" alt="Hospital ward">
+    <div class="photo__tint"></div>
+  </div>
+
+  <div class="content">
+    <div class="logo logo--light">
+      <svg class="logo__mark" viewBox="0 0 48 48" fill="none">
+        <path d="M9 40 V9 L39 40 V9" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9" cy="9" r="5" fill="#fff"/><circle cx="9" cy="40" r="5" fill="#3FBFB6"/>
+        <circle cx="39" cy="9" r="5" fill="#3FBFB6"/><circle cx="39" cy="40" r="5" fill="#fff"/>
+      </svg>
+      <span class="logo__word">Nexara</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <span class="eyebrow eyebrow--mint">One record, or no record</span>
+    <h1 class="headline headline--light">Every clinic keeps a piece of you. None of them keep the whole.</h1>
+    <p class="subhead subhead--light">Each new doctor starts blind — repeating the tests, re-asking the history, missing what the last one saw. Nexara is the single thread that follows you from first symptom to long-term care.</p>
+    <a class="btn btn--mint">Join the early-access list →</a>
+
+    <div class="spacer"></div>
+    <div class="foot-src foot-src--light">India is building ABDM, a national health-records network, precisely because patient records today live in disconnected silos.</div>
+  </div>
+</div>
+</body>
+</html>

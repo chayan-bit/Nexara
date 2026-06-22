@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ads.css">
+<style>
+  .left { width: 540px; }
+  .left .headline { font-size: 50px; margin-top: 16px; max-width: 16ch; }
+  .left .subhead { font-size: 20px; margin: 26px 0 30px; max-width: 31ch; }
+  .compare { margin-top: 30px; display: flex; flex-direction: column; gap: 14px; }
+  .compare .row { display: flex; align-items: baseline; gap: 14px; }
+  .compare .t { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; color: var(--nx-teal-700); white-space: nowrap; }
+  .compare .c { font-size: 18px; color: var(--nx-slate); }
+  .compare .row--muted .t { color: var(--nx-slate); }
+  .right { flex: 1; background: var(--nx-gray-100); }
+  .right img { object-position: 50% 50%; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <div class="panel panel--pad left">
+    <div class="logo">
+      <svg class="logo__mark" viewBox="0 0 48 48" fill="none">
+        <path d="M9 40 V9 L39 40 V9" stroke="#0E7C7B" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9" cy="9" r="5" fill="#0E7C7B"/><circle cx="9" cy="40" r="5" fill="#3FBFB6"/>
+        <circle cx="39" cy="9" r="5" fill="#3FBFB6"/><circle cx="39" cy="40" r="5" fill="#0E7C7B"/>
+      </svg>
+      <span class="logo__word">Nexara</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <span class="eyebrow">Finding care shouldn’t be guesswork</span>
+    <h1 class="headline">You can book dinner in 30 seconds. The right doctor still takes days.</h1>
+
+    <div class="compare">
+      <div class="row"><span class="t">30 sec</span><span class="c">to find a table near you</span></div>
+      <div class="row row--muted"><span class="t">days</span><span class="c">of calls, queues and dead ends to find the right doctor</span></div>
+    </div>
+
+    <div class="rule" style="margin-top:30px"></div>
+    <p class="subhead">Nexara brings the right verified professional, live wait-times and booking into one place — near you.</p>
+    <a class="btn btn--primary">See what we’re building →</a>
+
+    <div class="spacer"></div>
+    <div class="foot-src">Pre-launch — Nexara is being built. Discovery, wait-times and booking are core to the Phase 1 wedge.</div>
+  </div>
+
+  <div class="photo right keyline-l">
+    <img src="assets/phone-maps.jpg" alt="Finding places nearby on a phone map">
+  </div>
+
+</div>
+</body>
+</html>
