@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { fadeUp, staggerParent, inView } from '@/lib/motion';
+import { fadeUp, pop, staggerParent, inView } from '@/lib/motion';
 import { cn } from '@/lib/utils';
 
 /** Single element: fade + rise when scrolled into view (once). */
@@ -57,6 +57,39 @@ export function Stagger({
 export function RevealItem({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <motion.div variants={fadeUp} className={cn(className)}>
+      {children}
+    </motion.div>
+  );
+}
+
+/** Single element with a stronger "pop" entrance — for cards/tiles that want more life. */
+export function Pop({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      className={className}
+      variants={pop}
+      initial="hidden"
+      whileInView="show"
+      viewport={inView}
+      transition={{ delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** Pop-flavoured child of <Stagger>. */
+export function PopItem({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <motion.div variants={pop} className={cn(className)}>
       {children}
     </motion.div>
   );

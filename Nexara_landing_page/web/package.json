@@ -4,7 +4,7 @@
   "private": true,
   "description": "Nexara — the connective tissue of healthcare for India. Marketing landing page (seeds the shared product component library).",
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_ENV=development next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
